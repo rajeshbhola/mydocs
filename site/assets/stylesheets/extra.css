@@ -1,0 +1,408 @@
+/* ===================================
+   Custom Styles for MkDocs Material
+   =================================== */
+
+/* CSS Variables */
+:root {
+  --md-primary-fg-color: #1e40af;
+  --md-accent-fg-color: #6366f1;
+  --custom-gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --custom-gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+}
+
+/* Dark mode adjustments */
+[data-md-color-scheme="slate"] {
+  --md-primary-fg-color: #4f46e5;
+  --md-accent-fg-color: #818cf8;
+}
+
+/* ===================================
+   Typography Enhancements
+   =================================== */
+
+.md-typeset h1 {
+  font-weight: 700;
+  font-size: 2.5em;
+  background: var(--custom-gradient-1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1.5rem;
+}
+
+.md-typeset h2 {
+  font-weight: 600;
+  margin-top: 2rem;
+}
+
+.md-typeset h3 {
+  font-weight: 600;
+  color: var(--md-primary-fg-color);
+}
+
+/* ===================================
+   Card Grid Layout
+   =================================== */
+
+.grid.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.grid.cards > * {
+  background: var(--md-code-bg-color);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--md-default-fg-color--lightest);
+}
+
+.grid.cards > *:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--md-primary-fg-color);
+}
+
+/* ===================================
+   Button Enhancements
+   =================================== */
+
+.md-button {
+  border-radius: 0.375rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  text-transform: none;
+  padding: 0.625rem 1.25rem;
+}
+
+.md-button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.md-button--primary {
+  background: var(--custom-gradient-1);
+  border: none;
+}
+
+.md-button--primary:hover {
+  background: var(--custom-gradient-2);
+}
+
+/* ===================================
+   Code Block Enhancements
+   =================================== */
+
+.md-typeset pre > code {
+  border-radius: 0.5rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.md-typeset .highlight {
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+/* Code copy button styling */
+.md-clipboard {
+  transition: all 0.2s ease;
+}
+
+.md-clipboard:hover {
+  background-color: var(--md-primary-fg-color);
+  transform: scale(1.1);
+}
+
+/* ===================================
+   Admonition Improvements
+   =================================== */
+
+.md-typeset .admonition {
+  border-radius: 0.5rem;
+  border-left: 4px solid;
+  box-shadow: var(--shadow-sm);
+  margin: 1.5rem 0;
+}
+
+.md-typeset .admonition-title {
+  font-weight: 600;
+  padding-left: 0.75rem;
+}
+
+/* Specific admonition colors */
+.md-typeset .admonition.tip {
+  border-left-color: #00c853;
+}
+
+.md-typeset .admonition.warning {
+  border-left-color: #ff9100;
+}
+
+.md-typeset .admonition.danger {
+  border-left-color: #ff1744;
+}
+
+.md-typeset .admonition.info {
+  border-left-color: #00b0ff;
+}
+
+/* ===================================
+   Table Enhancements
+   =================================== */
+
+.md-typeset table:not([class]) {
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.md-typeset table:not([class]) th {
+  background: var(--md-primary-fg-color);
+  color: white;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.85em;
+  letter-spacing: 0.5px;
+}
+
+.md-typeset table:not([class]) tr:hover {
+  background-color: var(--md-code-bg-color);
+}
+
+/* ===================================
+   Navigation Enhancements
+   =================================== */
+
+.md-nav__link--active {
+  background: linear-gradient(90deg, var(--md-primary-fg-color) 0%, transparent 100%);
+  border-left: 3px solid var(--md-accent-fg-color);
+  font-weight: 600;
+}
+
+.md-nav__item .md-nav__link:hover {
+  border-left: 3px solid var(--md-primary-fg-color);
+  padding-left: 1rem;
+  transition: all 0.2s ease;
+}
+
+/* ===================================
+   Search Enhancements
+   =================================== */
+
+.md-search__input {
+  border-radius: 2rem;
+  box-shadow: var(--shadow-md);
+}
+
+.md-search__input:focus {
+  box-shadow: var(--shadow-lg);
+}
+
+/* ===================================
+   Tab Enhancements
+   =================================== */
+
+.tabbed-set {
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.tabbed-labels > label {
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.tabbed-labels > label:hover {
+  background-color: var(--md-code-bg-color);
+}
+
+/* ===================================
+   Footer Enhancements
+   =================================== */
+
+.md-footer {
+  background: var(--custom-gradient-1);
+}
+
+.md-footer-meta {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+/* ===================================
+   Custom Animations
+   =================================== */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.md-content {
+  animation: fadeInUp 0.5s ease-out;
+}
+
+/* ===================================
+   Header Customizations
+   =================================== */
+
+/* Remove header shadow/line */
+.md-header {
+  box-shadow: none;
+  border-bottom: none;
+}
+
+/* Align header elements properly */
+.md-header__inner {
+  padding: 0 0.4rem;
+}
+
+/* Remove any tabs styling since we're not using tabs */
+.md-tabs {
+  display: none;
+}
+
+/* Ensure sidebar is visible and properly styled */
+.md-sidebar--primary {
+  top: 3rem;
+}
+
+/* Style the navigation sections in sidebar */
+.md-nav--primary .md-nav__title {
+  background-color: var(--md-primary-fg-color);
+  color: white;
+  font-weight: 600;
+}
+
+/* ===================================
+   Reading Progress Bar
+   =================================== */
+
+#reading-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 3px;
+  background: var(--custom-gradient-2);
+  z-index: 1000;
+  transition: width 0.1s ease;
+}
+
+/* ===================================
+   Mobile Responsive Adjustments
+   =================================== */
+
+@media screen and (max-width: 76.1875em) {
+  .md-typeset h1 {
+    font-size: 2em;
+  }
+  
+  .grid.cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (max-width: 44.9375em) {
+  .md-typeset h1 {
+    font-size: 1.75em;
+  }
+  
+  .md-button {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+}
+
+/* ===================================
+   Print Styles
+   =================================== */
+
+@media print {
+  .md-header,
+  .md-footer,
+  .md-sidebar,
+  .md-nav__link--active::before {
+    display: none !important;
+  }
+  
+  .md-content {
+    max-width: 100%;
+  }
+}
+
+/* ===================================
+   Custom Utility Classes
+   =================================== */
+
+.text-center {
+  text-align: center;
+}
+
+.mt-2 {
+  margin-top: 2rem;
+}
+
+.mb-2 {
+  margin-bottom: 2rem;
+}
+
+.highlight-box {
+  background: var(--md-code-bg-color);
+  border-left: 4px solid var(--md-primary-fg-color);
+  padding: 1rem 1.5rem;
+  border-radius: 0.5rem;
+  margin: 1.5rem 0;
+}
+
+/* ===================================
+   Accessibility Improvements
+   =================================== */
+
+*:focus {
+  outline: 2px solid var(--md-accent-fg-color);
+  outline-offset: 2px;
+}
+
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--md-primary-fg-color);
+  color: white;
+  padding: 8px;
+  text-decoration: none;
+  z-index: 100;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* ===================================
+   Smooth Scrolling
+   =================================== */
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* ===================================
+   Loading State
+   =================================== */
+
+.md-content__inner::before {
+  animation: fadeInUp 0.4s ease-out;
+}
