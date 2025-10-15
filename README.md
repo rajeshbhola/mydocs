@@ -308,6 +308,19 @@ rm -rf site/
 mkdocs build --clean
 ```
 
+
+
+To Run Your Site:
+# Development server with live reload
+python -m mkdocs serve
+
+# Build static site
+python -m mkdocs build
+
+# Deploy to GitHub Pages
+python -m mkdocs gh-deploy
+
+
 ---
 
 **Happy documenting! 📖**

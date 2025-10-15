@@ -2,46 +2,38 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://yourdomain.com/</loc>
-         <lastmod>2025-10-13</lastmod>
-    </url>
-    <url>
-         <loc>https://yourdomain.com/java/</loc>
-         <lastmod>2025-10-13</lastmod>
-    </url>
-    <url>
-         <loc>https://yourdomain.com/java/basics/</loc>
-         <lastmod>2025-10-13</lastmod>
+         <lastmod>2025-10-15</lastmod>
     </url>
     <url>
          <loc>https://yourdomain.com/java/basics/identifiers/</loc>
-         <lastmod>2025-10-13</lastmod>
+         <lastmod>2025-10-15</lastmod>
     </url>
     <url>
          <loc>https://yourdomain.com/java/basics/keywords/</loc>
-         <lastmod>2025-10-13</lastmod>
+         <lastmod>2025-10-15</lastmod>
     </url>
     <url>
          <loc>https://yourdomain.com/java/exception-handling/</loc>
-         <lastmod>2025-10-13</lastmod>
+         <lastmod>2025-10-15</lastmod>
     </url>
     <url>
          <loc>https://yourdomain.com/java/oops/</loc>
-         <lastmod>2025-10-13</lastmod>
+         <lastmod>2025-10-15</lastmod>
     </url>
     <url>
          <loc>https://yourdomain.com/kafka/</loc>
-         <lastmod>2025-10-13</lastmod>
+         <lastmod>2025-10-15</lastmod>
     </url>
     <url>
          <loc>https://yourdomain.com/microservices/</loc>
-         <lastmod>2025-10-13</lastmod>
+         <lastmod>2025-10-15</lastmod>
     </url>
     <url>
          <loc>https://yourdomain.com/springboot/basics/</loc>
-         <lastmod>2025-10-13</lastmod>
+         <lastmod>2025-10-15</lastmod>
     </url>
     <url>
          <loc>https://yourdomain.com/sql/</loc>
-         <lastmod>2025-10-13</lastmod>
+         <lastmod>2025-10-15</lastmod>
     </url>
 </urlset>

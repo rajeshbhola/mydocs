@@ -4,19 +4,31 @@
 
 /* CSS Variables */
 :root {
-  --md-primary-fg-color: #1e40af;
-  --md-accent-fg-color: #6366f1;
+  --md-primary-fg-color: #3f51b5;
+  --md-accent-fg-color: #ff5722;
   --custom-gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   --custom-gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+  --custom-gradient-3: linear-gradient(135deg, #ff5722 0%, #ff6f00 100%);
+  --custom-gradient-4: linear-gradient(135deg, #3f51b5 0%, #5c6bc0 100%);
+  --custom-accent-color: #ff5722;
+  --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px 0 rgb(0 0 0 / 0.06);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -1px rgb(0 0 0 / 0.06);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -2px rgb(0 0 0 / 0.05);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 10px 10px -5px rgb(0 0 0 / 0.04);
+  --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Dark mode adjustments */
 [data-md-color-scheme="slate"] {
-  --md-primary-fg-color: #4f46e5;
-  --md-accent-fg-color: #818cf8;
+  --md-primary-fg-color: #00bfa5;
+  --md-accent-fg-color: #cddc39;
+  --custom-gradient-1: linear-gradient(135deg, #00e5cc 0%, #00bfa5 100%);
+  --custom-gradient-2: linear-gradient(135deg, #69f0ae 0%, #00e676 100%);
+  --custom-gradient-3: linear-gradient(135deg, #cddc39 0%, #c0ca33 100%);
+  --custom-gradient-4: linear-gradient(135deg, #00bfa5 0%, #009688 100%);
+  --custom-accent-color: #cddc39;
 }
 
 /* ===================================
@@ -24,23 +36,45 @@
    =================================== */
 
 .md-typeset h1 {
-  font-weight: 700;
-  font-size: 2.5em;
-  background: var(--custom-gradient-1);
+  font-weight: 800;
+  font-size: 2.75em;
+  background: var(--custom-gradient-4);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
+  animation: fadeInDown 0.6s ease-out;
 }
 
 .md-typeset h2 {
-  font-weight: 600;
-  margin-top: 2rem;
+  font-weight: 700;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.md-typeset h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: var(--custom-gradient-3);
+  border-radius: 2px;
 }
 
 .md-typeset h3 {
   font-weight: 600;
   color: var(--md-primary-fg-color);
+  margin-top: 1.5rem;
+}
+
+.md-typeset h4 {
+  font-weight: 600;
+  opacity: 0.9;
 }
 
 /* ===================================
@@ -49,24 +83,43 @@
 
 .grid.cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
-  margin: 2rem 0;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin: 2.5rem 0;
 }
 
 .grid.cards > * {
   background: var(--md-code-bg-color);
-  border-radius: 0.5rem;
-  padding: 1.5rem;
-  transition: all 0.3s ease;
-  box-shadow: var(--shadow-sm);
-  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 1rem;
+  padding: 2rem;
+  transition: all var(--transition-base);
+  box-shadow: var(--shadow-md);
+  border: 2px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.grid.cards > *::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--custom-gradient-3);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--transition-base);
 }
 
 .grid.cards > *:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-lg);
-  border-color: var(--md-primary-fg-color);
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: var(--shadow-xl);
+  border-color: var(--custom-accent-color);
+}
+
+.grid.cards > *:hover::before {
+  transform: scaleX(1);
 }
 
 /* ===================================
@@ -74,25 +127,47 @@
    =================================== */
 
 .md-button {
-  border-radius: 0.375rem;
-  font-weight: 500;
-  transition: all 0.2s ease;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: all var(--transition-fast);
   text-transform: none;
-  padding: 0.625rem 1.25rem;
+  padding: 0.75rem 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.md-button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.md-button:hover::before {
+  width: 300px;
+  height: 300px;
 }
 
 .md-button:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
 }
 
 .md-button--primary {
-  background: var(--custom-gradient-1);
+  background: var(--custom-gradient-4);
   border: none;
+  color: white;
 }
 
 .md-button--primary:hover {
-  background: var(--custom-gradient-2);
+  background: var(--custom-gradient-1);
+  box-shadow: var(--shadow-xl);
 }
 
 /* ===================================
@@ -137,19 +212,19 @@
 
 /* Specific admonition colors */
 .md-typeset .admonition.tip {
-  border-left-color: #00c853;
+  border-left-color: var(--custom-accent-color);
 }
 
 .md-typeset .admonition.warning {
-  border-left-color: #ff9100;
+  border-left-color: var(--custom-accent-color);
 }
 
 .md-typeset .admonition.danger {
-  border-left-color: #ff1744;
+  border-left-color: var(--custom-accent-color);
 }
 
 .md-typeset .admonition.info {
-  border-left-color: #00b0ff;
+  border-left-color: var(--custom-accent-color);
 }
 
 /* ===================================
@@ -180,8 +255,8 @@
    =================================== */
 
 .md-nav__link--active {
-  background: linear-gradient(90deg, var(--md-primary-fg-color) 0%, transparent 100%);
-  border-left: 3px solid var(--md-accent-fg-color);
+  
+  border-left: 3px solid var(--custom-accent-color);
   font-weight: 600;
 }
 
@@ -242,7 +317,7 @@
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(30px);
   }
   to {
     opacity: 1;
@@ -250,8 +325,50 @@
   }
 }
 
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
 .md-content {
-  animation: fadeInUp 0.5s ease-out;
+  animation: fadeInUp 0.6s ease-out;
 }
 
 /* ===================================
@@ -305,24 +422,74 @@
    Mobile Responsive Adjustments
    =================================== */
 
+/* Tablet and below */
 @media screen and (max-width: 76.1875em) {
   .md-typeset h1 {
-    font-size: 2em;
+    font-size: 2.25em;
   }
-  
+
+  .md-typeset h2 {
+    font-size: 1.75em;
+  }
+
   .grid.cards {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .grid.cards > * {
+    padding: 1.5rem;
   }
 }
 
+/* Mobile */
 @media screen and (max-width: 44.9375em) {
   .md-typeset h1 {
-    font-size: 1.75em;
+    font-size: 1.875em;
+    letter-spacing: -0.01em;
   }
-  
+
+  .md-typeset h2 {
+    font-size: 1.5em;
+    margin-top: 2rem;
+  }
+
+  .grid.cards {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .grid.cards > * {
+    padding: 1.25rem;
+  }
+
   .md-button {
     width: 100%;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
+    padding: 0.875rem 1.25rem;
+  }
+
+  .md-typeset table:not([class]) {
+    font-size: 0.85em;
+  }
+
+  .md-nav__link {
+    font-size: 0.9em;
+  }
+}
+
+/* Extra small devices */
+@media screen and (max-width: 30em) {
+  .md-typeset h1 {
+    font-size: 1.625em;
+  }
+
+  .md-typeset h2 {
+    font-size: 1.375em;
+  }
+
+  .grid.cards > * {
+    padding: 1rem;
   }
 }
 
@@ -372,7 +539,7 @@
    =================================== */
 
 *:focus {
-  outline: 2px solid var(--md-accent-fg-color);
+  outline: 2px solid var(--custom-accent-color);
   outline-offset: 2px;
 }
 
@@ -405,4 +572,331 @@ html {
 
 .md-content__inner::before {
   animation: fadeInUp 0.4s ease-out;
+}
+
+/* ===================================
+   Enhanced Link Styles
+   =================================== */
+
+.md-typeset a:not(.md-button) {
+  color: var(--md-primary-fg-color);
+  text-decoration: none;
+  background-image: linear-gradient(var(--md-accent-fg-color), var(--md-accent-fg-color));
+  background-position: 0% 100%;
+  background-repeat: no-repeat;
+  background-size: 0% 2px;
+  transition: background-size var(--transition-base);
+}
+
+.md-typeset a:not(.md-button):hover {
+  background-size: 100% 2px;
+}
+
+/* Light mode: make links underline visible */
+:root .md-typeset a:not(.md-button) {
+  background-image: linear-gradient(var(--custom-accent-color), var(--custom-accent-color));
+}
+
+/* Dark mode: green underline */
+[data-md-color-scheme="slate"] .md-typeset a:not(.md-button) {
+  background-image: linear-gradient(var(--custom-accent-color), var(--custom-accent-color));
+}
+
+/* ===================================
+   Hero Section Styles
+   =================================== */
+
+.hero-section {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: var(--custom-gradient-4);
+  border-radius: 1.5rem;
+  margin: 2rem 0;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+  animation: pulse 4s ease-in-out infinite;
+}
+
+.hero-section h1 {
+  color: white;
+  background: none;
+  -webkit-text-fill-color: white;
+  margin-bottom: 1rem;
+}
+
+.hero-section p {
+  font-size: 1.25rem;
+  opacity: 0.95;
+  margin-bottom: 2rem;
+}
+
+/* ===================================
+   Feature Cards
+   =================================== */
+
+.feature-card {
+  position: relative;
+  padding: 2rem;
+  background: var(--md-code-bg-color);
+  border-radius: 1rem;
+  transition: all var(--transition-base);
+  border: 2px solid transparent;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-xl);
+  border-color: var(--custom-accent-color);
+}
+
+.feature-card h3 {
+  margin-top: 0;
+  color: var(--md-primary-fg-color);
+}
+
+.feature-card-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  display: inline-block;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* ===================================
+   Progress Indicators
+   =================================== */
+
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background: var(--md-default-fg-color--lightest);
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 1rem 0;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: var(--custom-gradient-3);
+  border-radius: 10px;
+  transition: width 1s ease-out;
+}
+
+/* ===================================
+   Badges and Tags
+   =================================== */
+
+.badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 2rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  background: var(--custom-gradient-3);
+  color: white;
+  margin: 0.25rem;
+}
+
+.badge-primary {
+  background: var(--custom-gradient-4);
+}
+
+.badge-success {
+  background: var(--custom-gradient-1);
+}
+
+.badge-warning {
+  background: var(--custom-gradient-2);
+}
+
+.badge-info {
+  background: var(--custom-gradient-3);
+}
+
+/* ===================================
+   Timeline Styles
+   =================================== */
+
+.timeline {
+  position: relative;
+  padding-left: 2rem;
+  margin: 2rem 0;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--custom-gradient-4);
+}
+
+.timeline-item {
+  position: relative;
+  padding-bottom: 2rem;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -2.5rem;
+  top: 0.25rem;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--custom-accent-color);
+  border: 3px solid var(--md-default-bg-color);
+}
+
+/* ===================================
+   Code Tabs Enhancement
+   =================================== */
+
+.tabbed-set > input:checked + label {
+  background: var(--custom-gradient-4);
+  color: white;
+}
+
+.tabbed-set > label:hover {
+  background: var(--md-code-bg-color);
+  transform: translateY(-2px);
+  transition: all var(--transition-fast);
+}
+
+/* ===================================
+   Scroll to Top Button
+   =================================== */
+
+.scroll-to-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--custom-gradient-4);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: var(--shadow-lg);
+  opacity: 0;
+  visibility: hidden;
+  transition: all var(--transition-base);
+  z-index: 999;
+}
+
+.scroll-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.scroll-to-top:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-xl);
+}
+
+/* ===================================
+   Loading Spinner
+   =================================== */
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid var(--md-default-fg-color--lightest);
+  border-top-color: var(--md-primary-fg-color);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* ===================================
+   Enhanced Search Results
+   =================================== */
+
+.md-search-result__link:hover {
+  background: var(--md-code-bg-color);
+  transform: translateX(5px);
+  transition: all var(--transition-fast);
+}
+
+/* ===================================
+   Custom Scrollbar
+   =================================== */
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--md-default-bg-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--md-primary-fg-color);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--custom-accent-color);
+}
+
+/* ===================================
+   Additional Dark Mode Refinements
+   =================================== */
+
+/* Ensure dark mode backgrounds work well with teal/lime */
+[data-md-color-scheme="slate"] .md-button--primary {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+[data-md-color-scheme="slate"] .md-nav--primary .md-nav__title {
+  color: #ffffff;
+}
+
+[data-md-color-scheme="slate"] .md-typeset table:not([class]) th {
+  color: #ffffff;
+}
+
+/* Make active navigation more visible */
+.md-nav__link--active {
+  font-weight: 700;
+}
+
+[data-md-color-scheme="slate"] .md-nav__link--active {
+  background: linear-gradient(90deg, rgba(0, 191, 165, 0.2) 0%, transparent 100%);
+}
+
+/* Enhance hover effects for better visibility */
+[data-md-color-scheme="slate"] .md-nav__item .md-nav__link:hover {
+  color: var(--custom-accent-color);
+}
+
+/* Make scrollbar more visible in dark mode */
+[data-md-color-scheme="slate"] ::-webkit-scrollbar-thumb {
+  background: var(--md-primary-fg-color);
+}
+
+[data-md-color-scheme="slate"] ::-webkit-scrollbar-thumb:hover {
+  background: var(--custom-accent-color);
 }
