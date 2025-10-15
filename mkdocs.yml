@@ -1,6 +1,6 @@
 # Site Information
 site_name: Technical Documentation
-site_url: https://yourdomain.com
+site_url: https://rajeshbhola.github.io/mydocs/
 site_author: Rajesh Bhola
 site_description: A comprehensive guide to Java, Spring Boot, Microservices, SQL, and Kafka
 
@@ -159,9 +159,12 @@ extra_css:
   - assets/stylesheets/extra.css
 
 extra_javascript:
-  - assets/javascripts/extra.js
+  - /mydocs/docs/assets/javascripts/extra.js
   - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+extra_css:
+  - /mydocs/docs/assets/stylesheets/extra.css
 
 # Extra Configuration
 extra:
