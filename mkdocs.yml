@@ -5,8 +5,8 @@ site_author: Rajesh Bhola
 site_description: A comprehensive guide to Java, Spring Boot, Microservices, SQL, and Kafka
 
 # Repository
-repo_name: username/repo
-repo_url: https://github.com/username/repo
+repo_name: rajeshbhola/mydocs
+repo_url: https://github.com/rajeshbhola/mydocs
 edit_uri: edit/main/docs/
 
 # Copyright
