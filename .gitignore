@@ -1,0 +1,30 @@
+# Source files (don't deploy these)
+docs/
+mkdocs.yml
+README.md
+deploy.sh
+deploy.bat
+
+# Site build folder
+site/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+
+# OS files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# IDE
+.vscode/
+.idea/
+*.iml
